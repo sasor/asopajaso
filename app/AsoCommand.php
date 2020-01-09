@@ -50,4 +50,9 @@ class AsoCommand
         $command = '7p';
         return $this->runCommand($command);
     }
+
+    public function serviceActive()
+    {
+        return exec('systemctl is-active vsftpd >/dev/null 2>&1 && echo YES || echo NO');
+    }
 }

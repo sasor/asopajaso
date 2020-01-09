@@ -64,6 +64,24 @@ class AsoController
         return redirect()->route('home');
     }
 
+    public function start(Request $request)
+    {
+        $out = $this->startCommand();
+        return redirect()->route('home');
+    }
+
+    public function stop(Request $request)
+    {
+        $out = $this->stopCommand();
+        return redirect()->route('home');
+    }
+
+    public function restart(Request $request)
+    {
+        $out = $this->restartCommand();
+        return redirect()->route('home');
+    }
+
     public function runCommand($command_param)
     {
         $path = storage_path('app/public') . '/vsftpd.conf';
@@ -149,6 +167,7 @@ class AsoController
         $aso->local = $this->command->localValue();
         $aso->write = $this->command->writeValue();
         $aso->chroot = $this->command->chrootValue();
+        $aso->active = $this->command->serviceActive();
         return $aso;
     }
 }

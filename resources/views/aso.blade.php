@@ -59,4 +59,36 @@
             </form>
         </div>
     </div>
+    <div class="row">
+        @if(isset($aso) && $aso->active == 'NO')
+        <div class="col-xs-4">
+            <form action="{{ route('aso.start') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="hidden" name="start" value="1">
+                    <button>iniciar</button>
+                </div>
+            </form>
+        </div>
+        @else
+        <div class="col-xs-4">
+            <form action="{{ route('aso.stop') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="hidden" name="stop" value="1">
+                    <button>detener</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-4">
+            <form action="{{ route('aso.restart') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="hidden" name="restart" value="1">
+                    <button>reiniciar</button>
+                </div>
+            </form>
+        </div>
+        @endif
+    </div>
 @endsection

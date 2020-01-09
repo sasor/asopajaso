@@ -10,4 +10,5 @@ class Aso
     public $local;
     public $write;
     public $chroot;
+    public $active;
 }
